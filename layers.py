@@ -46,8 +46,6 @@ def decoder_rnn(cell, inputs,
 
                 encoded_ref = tf.nn.conv1d(ref, W_ref, 1, "VALID", name="encoded_ref")
                 encoded_query = tf.expand_dims(tf.matmul(query, W_q, name="encoded_query"), 1)
-                tiled_encoded_Query = tf.tile(
-                    encoded_query, [1, tf.shape(encoded_ref)[1], 1], name="tiled_encoded_query")
                 scores = tf.reduce_sum(v * tf.tanh(encoded_ref + encoded_query), [-1])
 
                 if with_softmax:

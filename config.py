@@ -1,16 +1,20 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import argparse
 
+
 def str2bool(v):
-  return v.lower() in ('true', '1')
+    return v.lower() in ('true', '1')
+
 
 arg_lists = []
 parser = argparse.ArgumentParser()
 
+
 def add_argument_group(name):
-  arg = parser.add_argument_group(name)
-  arg_lists.append(arg)
-  return arg
+    arg = parser.add_argument_group(name)
+    arg_lists.append(arg)
+    return arg
+
 
 # Network
 net_arg = add_argument_group('Network')
@@ -58,6 +62,7 @@ misc_arg.add_argument('--debug', type=str2bool, default=False)
 misc_arg.add_argument('--gpu_memory_fraction', type=float, default=1.0)
 misc_arg.add_argument('--random_seed', type=int, default=123, help='')
 
+
 def get_config():
-  config, unparsed = parser.parse_known_args()
-  return config, unparsed
+    config, unparsed = parser.parse_known_args()
+    return config, unparsed
